@@ -1,0 +1,62 @@
+﻿<Window x:Class="GoogleLunarCalendar.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Google农历活动" Height="380" Width="450" ResizeMode="NoResize">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="35" />
+            <RowDefinition Height="70" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="5*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Text="活动内容：" />
+        <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Text="农历时间：" />
+        <TextBlock Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Text="是否提醒：" />
+        <TextBlock Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Text="重复频率：" />
+        <TextBlock Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Text="活动地点：" />
+        <TextBlock Grid.Row="5" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Text="活动说明：" />
+
+        <TextBox Grid.Row="0" Grid.Column="1" Margin="0,3,0,3" x:Name="txtHDNR"/>
+        <Grid Grid.Row="1" Grid.Column="1" Margin="0,3,0,3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <DatePicker Grid.Row="0" Grid.Column="0" VerticalContentAlignment="Center" x:Name="dtpKSSJ"/>
+            <TextBlock Grid.Row="0" Grid.Column="1" Margin="5,0,5,0" VerticalAlignment="Center" Text="~"/>
+            <DatePicker Grid.Row="0" Grid.Column="2" VerticalContentAlignment="Center" x:Name="dtpJSSJ"/>
+        </Grid>
+        <Grid Grid.Row="2" Grid.Column="1" Margin="0,3,0,3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <CheckBox Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="ckSFTX" Click="CheckBox_Click"/>
+            <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0,0,0" x:Name="spHDTX" Visibility="Collapsed">
+                <TextBox VerticalContentAlignment="Center" Width="50" x:Name="txtTXXS" Text="09"/>
+                <TextBlock VerticalAlignment="Center" Text="时" />
+                <TextBox VerticalContentAlignment="Center" Width="50" x:Name="txtTXFZ" Text="00"/>
+                <TextBlock VerticalAlignment="Center" Text="分" />
+            </StackPanel>
+        </Grid>
+        <ComboBox Grid.Row="3" Grid.Column="1" Margin="0,3,0,3" VerticalContentAlignment="Center" x:Name="cboCFPL">
+            <ComboBox.Items>
+                <ComboBoxItem Content="每年" IsSelected="True"/>
+                <ComboBoxItem Content="每月"/>
+            </ComboBox.Items>
+        </ComboBox>
+        <TextBox Grid.Row="4" Grid.Column="1" Margin="0,3,0,3" x:Name="txtHDDD"/>
+        <TextBox Grid.Row="5" Grid.Column="1" Margin="0,3,0,3" x:Name="txtHDSM"/>
+
+        <Button Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Width="120" Height="35" Content="生成ICS文件" Click="btnCreate_Click"/>
+    </Grid>
+</Window>
